@@ -36,7 +36,7 @@ function media_image_url($image_filename)
     }
     // BASE_URL pointe vers /public, mais les images sont à la racine du projet
     // Donc on remonte d'un niveau pour accéder à /uploads/covers/
-    return 'http://localhost/mediatheque_paris_grp1/uploads/covers/' . $image_filename;
+    return 'http://localhost/ma-mediatheque/uploads/covers/' . $image_filename;
 }
 
 function redirect($path = '')
@@ -249,5 +249,5 @@ function calculate_days_late($return_date, $returned_at)
 
 function base_url($path = '')
 {
-    return '/mediatheque_paris_grp1_pierre/public' . $path;
+    return '/ma-mediatheque/public' . $path;
 }

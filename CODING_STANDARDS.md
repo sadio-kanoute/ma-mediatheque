@@ -226,7 +226,7 @@ if (is_logged_in()) {
 // config/database.php
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'php_mvc_app');
-define('BASE_URL', 'http://localhost/php-starter-cdpi/public');
+define('BASE_URL', 'http://localhost/ma-mediatheque/public');
 define('ROOT_PATH', dirname(__DIR__));
 ```
 

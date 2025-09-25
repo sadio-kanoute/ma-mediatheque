@@ -1,4 +1,4 @@
-mediatheque_paris_grp1/
+ma-mediatheque/
 │
 ├── config/
 │   ├── database.php

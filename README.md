@@ -18,7 +18,7 @@
 ## 📁 Structure du projet
 
 ```
-php-starter-cdpi/
+ma-mediatheque/
 ├── config/           # Configuration
 │   └── database.php  # Config BDD et constantes
 ├── controllers/      # Contrôleurs MVC
@@ -59,8 +59,8 @@ php-starter-cdpi/
 
 1. **Cloner le projet**
    ```bash
-   git clone https://github.com/votre-username/php-starter-cdpi.git
-   cd php-starter-cdpi
+   git clone https://github.com/votre-username/ma-mediatheque.git
+   cd ma-mediatheque
    ```
 
 2. **Configurer la base de données**
@@ -80,7 +80,7 @@ php-starter-cdpi/
    define('DB_NAME', 'votre_nom_de_db');
    define('DB_USER', 'votre_utilisateur');
    define('DB_PASS', 'votre_mot_de_passe');
-   define('BASE_URL', 'http://localhost/php-starter-cdpi/public');
+   define('BASE_URL', 'http://localhost/ma-mediatheque/public');
    ```
 
 ## 🎯 Utilisation

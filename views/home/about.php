@@ -32,7 +32,7 @@
                 </ul>
 
                 <h3>Structure du projet</h3>
-                <pre><code>php-starter-cdpi/
+                <pre><code>ma-mediatheque/
 ├── config/         # Configuration
 ├── controllers/    # Contrôleurs MVC
 ├── models/         # Modèles de données

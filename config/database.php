@@ -1,14 +1,37 @@
 <?php
+// Détection de l'environnement
+$is_plesk = isset($_SERVER['HTTP_HOST']) && (
+    strpos($_SERVER['HTTP_HOST'], 'sadio-kanoute') !== false ||
+    strpos($_SERVER['SERVER_NAME'], 'plesk') !== false ||
+    file_exists('/usr/local/psa') || // Répertoire typique Plesk Linux
+    file_exists('C:\\Program Files (x86)\\Parallels\\Plesk') // Répertoire typique Plesk Windows
+);
+
 // Configuration de la base de données
-if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
-if (!defined('DB_NAME')) define('DB_NAME', 'php_mvc_app');
-if (!defined('DB_USER')) define('DB_USER', 'root');
-if (!defined('DB_PASS')) define('DB_PASS', '');
-if (!defined('DB_CHARSET')) define('DB_CHARSET', 'utf8');
+if ($is_plesk) {
+    // Configuration pour Plesk
+    if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+    if (!defined('DB_NAME')) define('DB_NAME', 'sadio-kanoute_mediatheque'); // Format typique Plesk: username_dbname
+    if (!defined('DB_USER')) define('DB_USER', 'sadio-kanoute');
+    if (!defined('DB_PASS')) define('DB_PASS', 'Adama@1974');
+    if (!defined('DB_CHARSET')) define('DB_CHARSET', 'utf8mb4');
+} else {
+    // Configuration pour développement local
+    if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+    if (!defined('DB_NAME')) define('DB_NAME', 'php_mvc_app');
+    if (!defined('DB_USER')) define('DB_USER', 'root');
+    if (!defined('DB_PASS')) define('DB_PASS', '');
+    if (!defined('DB_CHARSET')) define('DB_CHARSET', 'utf8');
+}
 
 // Configuration générale de l'application
-
-if (!defined('BASE_URL')) define('BASE_URL', 'http://localhost/mediatheque_paris_grp1/public');
+if ($is_plesk) {
+    // Configuration pour Plesk - ajustez le domaine selon votre configuration
+    if (!defined('BASE_URL')) define('BASE_URL', 'https://' . $_SERVER['HTTP_HOST'] . '/public');
+} else {
+    // Configuration pour développement local
+    if (!defined('BASE_URL')) define('BASE_URL', 'http://localhost/ma-mediatheque/public');
+}
 
 if (!defined('APP_NAME')) define('APP_NAME', 'Paris en culture');
 if (!defined('APP_VERSION')) define('APP_VERSION', '1.0.0');
