@@ -1,6 +1,6 @@
 # PHP MVC Starter - Boilerplate Procédural
 
- Ce starter kit vous permet de créer rapidement des applications web avec une structure claire et des fonctionnalités de base intégrées.
+Ce starter kit vous permet de créer rapidement des applications web avec une structure claire et des fonctionnalités de base intégrées.
 
 ## 🚀 Fonctionnalités
 
@@ -58,17 +58,20 @@ ma-mediatheque/
 ### Étapes d'installation
 
 1. **Cloner le projet**
+
    ```bash
    git clone https://github.com/votre-username/ma-mediatheque.git
    cd ma-mediatheque
    ```
 
 2. **Configurer la base de données**
+
    - Créer une base de données MySQL
    - Importer le schéma : `mysql -u root -p votre_db < database/schema.sql`
    - Modifier la configuration dans `config/database.php`
 
 3. **Configuration Apache**
+
    - Pointer le DocumentRoot vers le dossier `public/`
    - S'assurer que le module `mod_rewrite` est activé
    - Le fichier `.htaccess` est déjà configuré
@@ -90,6 +93,7 @@ ma-mediatheque/
 Les URLs suivent le pattern : `base_url/controller/action/params`
 
 Exemples :
+
 - `/` → `home_controller.php` → `home_index()`
 - `/auth/login` → `auth_controller.php` → `auth_login()`
 - `/home/about` → `home_controller.php` → `home_about()`
@@ -184,7 +188,7 @@ function blog_create() {
     if (is_post()) {
         $title = clean_input(post('title'));
         $content = clean_input(post('content'));
-        
+
         if (empty($title) || empty($content)) {
             set_flash('error', 'Titre et contenu obligatoires');
         } else {
@@ -197,7 +201,7 @@ function blog_create() {
             }
         }
     }
-    
+
     load_view_with_layout('blog/create', ['title' => 'Nouvel article']);
 }
 ```
@@ -205,29 +209,34 @@ function blog_create() {
 ## 🔧 Fonctions utilitaires
 
 ### Base de données
+
 - `db_select($query, $params)` - Exécuter une requête SELECT
 - `db_select_one($query, $params)` - Une seule ligne
 - `db_execute($query, $params)` - INSERT/UPDATE/DELETE
 - `db_last_insert_id()` - Dernier ID inséré
 
 ### Vues et templating
+
 - `load_view($view, $data)` - Charger une vue
 - `load_view_with_layout($view, $data, $layout)` - Avec layout
 - `include_partial($partial, $data)` - Inclure un partial
 - `escape($string)` / `e($string)` - Sécuriser l'affichage
 
 ### Routing et URLs
+
 - `url($path)` - Générer une URL
 - `redirect($path)` - Redirection
 - `is_post()` / `is_get()` - Type de requête
 
 ### Session et sécurité
+
 - `is_logged_in()` - Vérifier connexion
 - `current_user_id()` - ID utilisateur connecté
 - `csrf_token()` - Générer token CSRF
 - `set_flash($type, $message)` - Message flash
 
 ### Validation
+
 - `clean_input($data)` - Nettoyer les données
 - `validate_email($email)` - Valider email
 - `hash_password($password)` - Hacher mot de passe
@@ -238,11 +247,11 @@ Le CSS utilise des variables CSS pour faciliter la personnalisation :
 
 ```css
 :root {
-    --primary-color: #3b82f6;
-    --secondary-color: #6b7280;
-    --success-color: #10b981;
-    --error-color: #ef4444;
-    /* ... */
+  --primary-color: #3b82f6;
+  --secondary-color: #6b7280;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  /* ... */
 }
 ```
 
@@ -259,6 +268,7 @@ Modifiez ces variables dans `public/assets/css/style.css` pour changer l'apparen
 ## 📊 Base de données
 
 Le schéma inclut :
+
 - Table `users` : Gestion des utilisateurs
 - Table `contact_messages` : Messages de contact
 - Table `sessions` : Sessions alternatives
@@ -279,6 +289,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## 🆘 Support
 
 Pour toute question ou problème :
+
 - Ouvrir une issue sur GitHub
 - Consulter la documentation dans le code
 - Vérifier les exemples dans les contrôleurs
@@ -287,13 +298,13 @@ Pour toute question ou problème :
 
 **Développé avec ❤️ en PHP procédural**
 
+/\*\*
 
+- Section importante du code
+- ================================
+  \*/
 
-/**
- * Section importante du code
- * ================================
- */
-```
+````
 
 ## ⚠️ Gestion des erreurs
 
@@ -312,9 +323,10 @@ function require_login() {
         redirect('auth/login');
     }
 }
-```
+````
 
 ### Messages flash
+
 ```php
 // Types standardisés
 set_flash('success', 'Opération réussie');
@@ -324,30 +336,31 @@ set_flash('info', 'Information importante');
 ```
 
 ### Validation des données
+
 ```php
 function validate_user_data($data) {
     $errors = [];
-    
+
     if (empty($data['name'])) {
         $errors[] = 'Le nom est obligatoire';
     }
-    
+
     if (!validate_email($data['email'])) {
         $errors[] = 'Email invalide';
     }
-    
+
     if (strlen($data['password']) < 8) {
         $errors[] = 'Mot de passe trop court';
     }
-    
+
     return $errors;
 }
 ```
 
-
 ## 🔒 Sécurité
 
 ### Protection XSS
+
 - **Échappement systématique** des données d'affichage
 - **Fonctions helpers** : `esc()`, `e()`
 
@@ -361,6 +374,7 @@ function validate_user_data($data) {
 ```
 
 ### Protection CSRF
+
 - **Token CSRF** pour tous les formulaires
 - **Vérification** côté serveur
 
